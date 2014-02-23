@@ -26,4 +26,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)btnExplore {
+    NSLog(@"Get lat y lng y pasar a otro StoryBoard");
+}
+
 @end
