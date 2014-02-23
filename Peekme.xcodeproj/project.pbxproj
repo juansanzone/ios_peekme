@@ -21,6 +21,8 @@
 		836F211B18B90468008EA618 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836F20FD18B90468008EA618 /* UIKit.framework */; };
 		836F212318B90468008EA618 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 836F212118B90468008EA618 /* InfoPlist.strings */; };
 		836F212518B90468008EA618 /* PeekmeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F212418B90468008EA618 /* PeekmeTests.m */; };
+		83B16D0B18B989DD0073C541 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B16D0A18B989DD0073C541 /* logo.png */; };
+		83B16D0F18B9920C0073C541 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B16D0E18B9920C0073C541 /* search.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		836F212018B90468008EA618 /* PeekmeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PeekmeTests-Info.plist"; sourceTree = "<group>"; };
 		836F212218B90468008EA618 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		836F212418B90468008EA618 /* PeekmeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeekmeTests.m; sourceTree = "<group>"; };
+		83B16D0A18B989DD0073C541 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = SOURCE_ROOT; };
+		83B16D0E18B9920C0073C541 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,8 @@
 		836F210018B90468008EA618 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				83B16D0E18B9920C0073C541 /* search.png */,
+				83B16D0A18B989DD0073C541 /* logo.png */,
 				836F210118B90468008EA618 /* Peekme-Info.plist */,
 				836F210218B90468008EA618 /* InfoPlist.strings */,
 				836F210518B90468008EA618 /* main.m */,
@@ -228,6 +234,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B16D0F18B9920C0073C541 /* search.png in Resources */,
+				83B16D0B18B989DD0073C541 /* logo.png in Resources */,
 				836F211218B90468008EA618 /* Images.xcassets in Resources */,
 				836F210418B90468008EA618 /* InfoPlist.strings in Resources */,
 				836F210D18B90468008EA618 /* Main.storyboard in Resources */,
@@ -460,6 +468,7 @@
 				836F212A18B90468008EA618 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		836F212B18B90468008EA618 /* Build configuration list for PBXNativeTarget "PeekmeTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +477,7 @@
 				836F212D18B90468008EA618 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
