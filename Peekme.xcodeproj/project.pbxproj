@@ -21,8 +21,9 @@
 		836F211B18B90468008EA618 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836F20FD18B90468008EA618 /* UIKit.framework */; };
 		836F212318B90468008EA618 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 836F212118B90468008EA618 /* InfoPlist.strings */; };
 		836F212518B90468008EA618 /* PeekmeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F212418B90468008EA618 /* PeekmeTests.m */; };
-		83B16D0B18B989DD0073C541 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B16D0A18B989DD0073C541 /* logo.png */; };
+		83782AF318BAB5D100E4A4A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83782AF218BAB5D100E4A4A4 /* CoreLocation.framework */; };
 		83B16D0F18B9920C0073C541 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B16D0E18B9920C0073C541 /* search.png */; };
+		83B67AAD18BA584700D4DF42 /* logo_ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B67AAC18BA584700D4DF42 /* logo_ios7.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +56,9 @@
 		836F212018B90468008EA618 /* PeekmeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PeekmeTests-Info.plist"; sourceTree = "<group>"; };
 		836F212218B90468008EA618 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		836F212418B90468008EA618 /* PeekmeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeekmeTests.m; sourceTree = "<group>"; };
-		83B16D0A18B989DD0073C541 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = SOURCE_ROOT; };
+		83782AF218BAB5D100E4A4A4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		83B16D0E18B9920C0073C541 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = SOURCE_ROOT; };
+		83B67AAC18BA584700D4DF42 /* logo_ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_ios7.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83782AF318BAB5D100E4A4A4 /* CoreLocation.framework in Frameworks */,
 				836F20FC18B90468008EA618 /* CoreGraphics.framework in Frameworks */,
 				836F20FE18B90468008EA618 /* UIKit.framework in Frameworks */,
 				836F20FA18B90468008EA618 /* Foundation.framework in Frameworks */,
@@ -105,6 +108,7 @@
 		836F20F818B90468008EA618 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83782AF218BAB5D100E4A4A4 /* CoreLocation.framework */,
 				836F20F918B90468008EA618 /* Foundation.framework */,
 				836F20FB18B90468008EA618 /* CoreGraphics.framework */,
 				836F20FD18B90468008EA618 /* UIKit.framework */,
@@ -130,8 +134,8 @@
 		836F210018B90468008EA618 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				83B67AAC18BA584700D4DF42 /* logo_ios7.png */,
 				83B16D0E18B9920C0073C541 /* search.png */,
-				83B16D0A18B989DD0073C541 /* logo.png */,
 				836F210118B90468008EA618 /* Peekme-Info.plist */,
 				836F210218B90468008EA618 /* InfoPlist.strings */,
 				836F210518B90468008EA618 /* main.m */,
@@ -235,7 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83B16D0F18B9920C0073C541 /* search.png in Resources */,
-				83B16D0B18B989DD0073C541 /* logo.png in Resources */,
+				83B67AAD18BA584700D4DF42 /* logo_ios7.png in Resources */,
 				836F211218B90468008EA618 /* Images.xcassets in Resources */,
 				836F210418B90468008EA618 /* InfoPlist.strings in Resources */,
 				836F210D18B90468008EA618 /* Main.storyboard in Resources */,
