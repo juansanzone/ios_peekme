@@ -24,6 +24,7 @@ CLLocationManager *locationManager;
     
     // Init locationManager
     locationManager = [[CLLocationManager alloc] init];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,7 +43,8 @@ CLLocationManager *locationManager;
     [locationManager startUpdatingLocation];
 }
 
-// locationManager Events
+
+/* ------- locationManager EVENTS ------- */
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"didFailWithError: %@", error);
@@ -68,6 +70,6 @@ CLLocationManager *locationManager;
         NSLog(@"Longitude: %@", self.longitude);
     }
 }
-// END - locationManager Events
+/* ------- END locationManager EVENTS ------- */
 
 @end
