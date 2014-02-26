@@ -66,8 +66,18 @@ CLLocationManager *locationManager;
         // Stop locationManager (SavingBatteryPower)
         [locationManager stopUpdatingLocation];
         
+        // Log values
         NSLog(@"Latitude: %@", self.latitude);
         NSLog(@"Longitude: %@", self.longitude);
+        
+        // Get references for labels view Elemenents
+        UILabel *lblLatitude = (UILabel *)[self.view viewWithTag:(1)];
+        UILabel *lblLongitude = (UILabel *)[self.view viewWithTag:(2)];
+        
+        // Send values to View
+        lblLatitude.text = self.latitude;
+        lblLongitude.text = self.longitude;
+        
     }
 }
 /* ------- END locationManager EVENTS ------- */
