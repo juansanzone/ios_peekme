@@ -70,11 +70,14 @@ CLLocationManager *locationManager;
         NSLog(@"Latitude: %@", self.latitude);
         NSLog(@"Longitude: %@", self.longitude);
         
-        // Get references for labels view Elemenents
-        UILabel *lblLatitude = (UILabel *)[self.view viewWithTag:(1)];
-        UILabel *lblLongitude = (UILabel *)[self.view viewWithTag:(2)];
+        // Get reference for Next View
+        UIView *viewPhotoList = [self.view viewWithTag:(10)];
         
-        // Send values to View
+        // Get references for labels
+        UILabel *lblLatitude = (UILabel *)[viewPhotoList viewWithTag:(1)];
+        UILabel *lblLongitude = (UILabel *)[viewPhotoList viewWithTag:(2)];
+        
+        // Send values to Next View
         lblLatitude.text = self.latitude;
         lblLongitude.text = self.longitude;
         
