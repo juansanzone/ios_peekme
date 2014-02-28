@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		836E377B18C02D140034C93D /* ListPhotosVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 836E377A18C02D140034C93D /* ListPhotosVC.m */; };
 		836F20FA18B90468008EA618 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836F20F918B90468008EA618 /* Foundation.framework */; };
 		836F20FC18B90468008EA618 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836F20FB18B90468008EA618 /* CoreGraphics.framework */; };
 		836F20FE18B90468008EA618 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836F20FD18B90468008EA618 /* UIKit.framework */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		836E377918C02D140034C93D /* ListPhotosVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListPhotosVC.h; sourceTree = "<group>"; };
+		836E377A18C02D140034C93D /* ListPhotosVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListPhotosVC.m; sourceTree = "<group>"; };
 		836F20F618B90468008EA618 /* Peekme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peekme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		836F20F918B90468008EA618 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		836F20FB18B90468008EA618 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -120,6 +123,8 @@
 		836F20FF18B90468008EA618 /* Peekme */ = {
 			isa = PBXGroup;
 			children = (
+				836E377918C02D140034C93D /* ListPhotosVC.h */,
+				836E377A18C02D140034C93D /* ListPhotosVC.m */,
 				836F210818B90468008EA618 /* AppDelegate.h */,
 				836F210918B90468008EA618 /* AppDelegate.m */,
 				836F210B18B90468008EA618 /* Main.storyboard */,
@@ -264,6 +269,7 @@
 				836F211018B90468008EA618 /* ViewController.m in Sources */,
 				836F210A18B90468008EA618 /* AppDelegate.m in Sources */,
 				836F210618B90468008EA618 /* main.m in Sources */,
+				836E377B18C02D140034C93D /* ListPhotosVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

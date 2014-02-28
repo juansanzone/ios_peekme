@@ -22,8 +22,19 @@ CLLocationManager *locationManager;
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    
+    // SystemStatusBar TintColor Fix
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     // Init locationManager
     locationManager = [[CLLocationManager alloc] init];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // Hide navigationBar
+    self.navigationController.navigationBarHidden = YES;
     
 }
 
@@ -44,6 +55,12 @@ CLLocationManager *locationManager;
 }
 
 
+// SystemStatusBar TintColor Fix
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
+
 /* ------- locationManager EVENTS ------- */
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
@@ -55,7 +72,6 @@ CLLocationManager *locationManager;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    // NSLog(@"didUpdateToLocation: %@", newLocation);
     CLLocation *currentLocation = newLocation;
     
     if (nil != currentLocation)
@@ -69,18 +85,6 @@ CLLocationManager *locationManager;
         // Log values
         NSLog(@"Latitude: %@", self.latitude);
         NSLog(@"Longitude: %@", self.longitude);
-        
-        // Get reference for Next View
-        UIView *viewPhotoList = [self.view viewWithTag:(10)];
-        
-        // Get references for labels
-        UILabel *lblLatitude = (UILabel *)[viewPhotoList viewWithTag:(1)];
-        UILabel *lblLongitude = (UILabel *)[viewPhotoList viewWithTag:(2)];
-        
-        // Send values to Next View
-        lblLatitude.text = self.latitude;
-        lblLongitude.text = self.longitude;
-        
     }
 }
 /* ------- END locationManager EVENTS ------- */
