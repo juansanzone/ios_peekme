@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		836E377B18C02D140034C93D /* ListPhotosVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 836E377A18C02D140034C93D /* ListPhotosVC.m */; };
 		836F20FA18B90468008EA618 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836F20F918B90468008EA618 /* Foundation.framework */; };
 		836F20FC18B90468008EA618 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836F20FB18B90468008EA618 /* CoreGraphics.framework */; };
 		836F20FE18B90468008EA618 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836F20FD18B90468008EA618 /* UIKit.framework */; };
@@ -23,7 +24,7 @@
 		836F212518B90468008EA618 /* PeekmeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F212418B90468008EA618 /* PeekmeTests.m */; };
 		83782AF318BAB5D100E4A4A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83782AF218BAB5D100E4A4A4 /* CoreLocation.framework */; };
 		83B16D0F18B9920C0073C541 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B16D0E18B9920C0073C541 /* search.png */; };
-		83B67AAD18BA584700D4DF42 /* logo_ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B67AAC18BA584700D4DF42 /* logo_ios7.png */; };
+		83E288AC18BEB6E4002028E3 /* flat-owl-shape.png in Resources */ = {isa = PBXBuildFile; fileRef = 83E288AB18BEB6E4002028E3 /* flat-owl-shape.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		836E377918C02D140034C93D /* ListPhotosVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListPhotosVC.h; sourceTree = "<group>"; };
+		836E377A18C02D140034C93D /* ListPhotosVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListPhotosVC.m; sourceTree = "<group>"; };
 		836F20F618B90468008EA618 /* Peekme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peekme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		836F20F918B90468008EA618 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		836F20FB18B90468008EA618 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,7 +61,7 @@
 		836F212418B90468008EA618 /* PeekmeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeekmeTests.m; sourceTree = "<group>"; };
 		83782AF218BAB5D100E4A4A4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		83B16D0E18B9920C0073C541 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = SOURCE_ROOT; };
-		83B67AAC18BA584700D4DF42 /* logo_ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_ios7.png; sourceTree = SOURCE_ROOT; };
+		83E288AB18BEB6E4002028E3 /* flat-owl-shape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flat-owl-shape.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,8 @@
 		836F20FF18B90468008EA618 /* Peekme */ = {
 			isa = PBXGroup;
 			children = (
+				836E377918C02D140034C93D /* ListPhotosVC.h */,
+				836E377A18C02D140034C93D /* ListPhotosVC.m */,
 				836F210818B90468008EA618 /* AppDelegate.h */,
 				836F210918B90468008EA618 /* AppDelegate.m */,
 				836F210B18B90468008EA618 /* Main.storyboard */,
@@ -134,7 +139,7 @@
 		836F210018B90468008EA618 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				83B67AAC18BA584700D4DF42 /* logo_ios7.png */,
+				83E288AB18BEB6E4002028E3 /* flat-owl-shape.png */,
 				83B16D0E18B9920C0073C541 /* search.png */,
 				836F210118B90468008EA618 /* Peekme-Info.plist */,
 				836F210218B90468008EA618 /* InfoPlist.strings */,
@@ -239,8 +244,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				83B16D0F18B9920C0073C541 /* search.png in Resources */,
-				83B67AAD18BA584700D4DF42 /* logo_ios7.png in Resources */,
 				836F211218B90468008EA618 /* Images.xcassets in Resources */,
+				83E288AC18BEB6E4002028E3 /* flat-owl-shape.png in Resources */,
 				836F210418B90468008EA618 /* InfoPlist.strings in Resources */,
 				836F210D18B90468008EA618 /* Main.storyboard in Resources */,
 			);
@@ -264,6 +269,7 @@
 				836F211018B90468008EA618 /* ViewController.m in Sources */,
 				836F210A18B90468008EA618 /* AppDelegate.m in Sources */,
 				836F210618B90468008EA618 /* main.m in Sources */,
+				836E377B18C02D140034C93D /* ListPhotosVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

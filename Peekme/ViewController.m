@@ -22,8 +22,20 @@ CLLocationManager *locationManager;
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
+    
+    // SystemStatusBar TintColor Fix
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     // Init locationManager
     locationManager = [[CLLocationManager alloc] init];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // Hide navigationBar
+    self.navigationController.navigationBarHidden = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,7 +54,14 @@ CLLocationManager *locationManager;
     [locationManager startUpdatingLocation];
 }
 
-// locationManager Events
+
+// SystemStatusBar TintColor Fix
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
+
+/* ------- locationManager EVENTS ------- */
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     NSLog(@"didFailWithError: %@", error);
@@ -53,7 +72,6 @@ CLLocationManager *locationManager;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
-    // NSLog(@"didUpdateToLocation: %@", newLocation);
     CLLocation *currentLocation = newLocation;
     
     if (nil != currentLocation)
@@ -64,10 +82,11 @@ CLLocationManager *locationManager;
         // Stop locationManager (SavingBatteryPower)
         [locationManager stopUpdatingLocation];
         
+        // Log values
         NSLog(@"Latitude: %@", self.latitude);
         NSLog(@"Longitude: %@", self.longitude);
     }
 }
-// END - locationManager Events
+/* ------- END locationManager EVENTS ------- */
 
 @end
