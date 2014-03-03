@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "ListPhotosVC.h"
+
 
 @interface ViewController ()
 
@@ -49,10 +51,32 @@ CLLocationManager *locationManager;
 {
     // Delegate locationManager
     NSLog(@"Delegate event to locatioManager");
+   
+    /*
+        // MANUAL SEGUE
+        [self performSegueWithIdentifier:@"showListPhotos" sender:nil];
+    */
+     
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
 }
+
+
+- (IBAction)btnTellAFriend {
+    // TODO: Implement share app code
+}
+
+/* ------- styles effects for btnExplore ------- */
+- (IBAction)btnExploreTouchDown:(UIButton *)sender {
+    [sender setAlpha: 0.50];
+}
+
+- (IBAction)btnExploreTouchUpOut:(UIButton *)sender {
+      [sender setAlpha: 0.25];
+}
+/* ------- END styles effects for btnExplore ------- */
+
 
 
 // SystemStatusBar TintColor Fix
@@ -82,11 +106,32 @@ CLLocationManager *locationManager;
         // Stop locationManager (SavingBatteryPower)
         [locationManager stopUpdatingLocation];
         
-        // Log values
-        NSLog(@"Latitude: %@", self.latitude);
-        NSLog(@"Longitude: %@", self.longitude);
+        NSLog(@"latitude initial screen: %@", self.latitude);
     }
 }
 /* ------- END locationManager EVENTS ------- */
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"showListPhotos"]) {
+        ListPhotosVC *destViewController = segue.destinationViewController;
+        destViewController.latitude = self.latitude;
+        destViewController.longitude = self.longitude;
+    }
+}
+
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    NSLog(@"latitude initial screen segue action: %@", self.latitude);
+    
+    if ([identifier isEqualToString:@"showListPhotos"]) {
+        if ([self.latitude isEqual:[NSNull null]]) {
+            NSLog(@"Latitude is null, cancel segue");
+            return NO;
+        }
+    }
+    
+    return YES;
+}
 
 @end
