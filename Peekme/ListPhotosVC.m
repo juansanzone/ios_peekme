@@ -38,7 +38,7 @@ CLLocationManager *locationManager;
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
-    //self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.hidesBackButton = YES;
 }
 
 
@@ -74,12 +74,14 @@ CLLocationManager *locationManager;
         // Stop locationManager (SavingBatteryPower)
         [locationManager stopUpdatingLocation];
         
+        // Sleep for debug
+        [NSThread sleepForTimeInterval:2.0f];
+        
         self.getLocationLabel.text = @"";
         [self.getLocationIndicator stopAnimating];
-     
         
-        NSLog(@"Latitude: %@", self.latitude);
-        NSLog(@"Longitude: %@", self.longitude);
+        NSLog(@"Latitude nueva: %@", self.latitude);
+        NSLog(@"Longitude nueva: %@", self.longitude);
     }
 }
 /* ------- END locationManager EVENTS ------- */
