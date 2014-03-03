@@ -14,11 +14,19 @@
 
 @implementation ListPhotosVC
 
+@synthesize latitude;
+@synthesize longitude;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    // SystemStatusBar TintColor Fix
+    [self setNeedsStatusBarAppearanceUpdate];
+    
+    NSLog(@"Latitude: %@", self.latitude);
+    NSLog(@"Longitude: %@", self.longitude);
 }
 
 
@@ -26,7 +34,7 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
-    self.navigationItem.hidesBackButton = YES;
+    //self.navigationItem.hidesBackButton = YES;
 }
 
 
@@ -34,6 +42,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// SystemStatusBar TintColor Fix
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 @end
