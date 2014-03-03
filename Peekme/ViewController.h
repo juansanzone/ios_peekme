@@ -8,13 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import <CoreLocation/CoreLocation.h>
-
-@interface ViewController : UIViewController <CLLocationManagerDelegate>
-
-// Lat & long vars
-@property NSString *latitude;
-@property NSString *longitude;
+@interface ViewController : UIViewController
 
 // Explore now Btn
 - (IBAction)btnExplore;

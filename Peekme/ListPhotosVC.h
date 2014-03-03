@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ListPhotosVC : UIViewController
+@interface ListPhotosVC : UIViewController  <CLLocationManagerDelegate>
 
 // Lat & long vars
 @property NSString *latitude;
 @property NSString *longitude;
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *getLocationIndicator;
+
+@property (weak, nonatomic) IBOutlet UILabel *getLocationLabel;
 
 @end

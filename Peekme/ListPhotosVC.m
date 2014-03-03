@@ -14,8 +14,8 @@
 
 @implementation ListPhotosVC
 
-@synthesize latitude;
-@synthesize longitude;
+// Declare locationManager
+CLLocationManager *locationManager;
 
 - (void)viewDidLoad
 {
@@ -25,8 +25,12 @@
     // SystemStatusBar TintColor Fix
     [self setNeedsStatusBarAppearanceUpdate];
     
-    NSLog(@"Latitude: %@", self.latitude);
-    NSLog(@"Longitude: %@", self.longitude);
+    // Init locationManager
+    locationManager = [[CLLocationManager alloc] init];
+    
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
 }
 
 
@@ -48,5 +52,36 @@
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
+
+/* ------- locationManager EVENTS ------- */
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+    UIAlertView *errorAlert = [[UIAlertView alloc]
+                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    CLLocation *currentLocation = newLocation;
+    
+    if (nil != currentLocation)
+    {
+        self.longitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
+        self.latitude = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+        
+        // Stop locationManager (SavingBatteryPower)
+        [locationManager stopUpdatingLocation];
+        
+        self.getLocationLabel.text = @"";
+        [self.getLocationIndicator stopAnimating];
+     
+        
+        NSLog(@"Latitude: %@", self.latitude);
+        NSLog(@"Longitude: %@", self.longitude);
+    }
+}
+/* ------- END locationManager EVENTS ------- */
 
 @end
