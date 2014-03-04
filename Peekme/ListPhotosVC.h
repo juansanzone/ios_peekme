@@ -19,4 +19,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *getLocationLabel;
 
+- (IBAction)updateLocationButton:(UIBarButtonItem *)sender;
+
 @end
