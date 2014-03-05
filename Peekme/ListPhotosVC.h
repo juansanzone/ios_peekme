@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface ListPhotosVC : UIViewController  <CLLocationManagerDelegate>
+@interface ListPhotosVC : UIViewController  <CLLocationManagerDelegate, NSURLConnectionDelegate>
+
+// Model to receive Data from WS
+@property NSMutableData *_responseData;
 
 // Lat & long vars
 @property NSString *latitude;
