@@ -49,6 +49,68 @@ CLLocationManager *locationManager;
 
 
 
+-(void) appendPhoto:(NSString*) photoUrl
+{
+    // TODO: Implement this method
+    NSLog(@"append --> %@", photoUrl);
+}
+
+-(void) parseDataPhotosResponseAction
+{
+    NSError *error = nil;
+    NSArray *jsonArray = [NSJSONSerialization
+                            JSONObjectWithData: self._responseData
+                            options: kNilOptions
+                            error: &error
+                          ];
+    
+    if (nil != error) {
+        NSLog(@"Error parsing JSON");
+    }
+    else {
+        
+        // NSLog(@"Parse data OK: %@", jsonArray);
+        
+        // TODO: check status key-value from Response
+        
+        NSArray *jsonPhotosResponse = [jsonArray valueForKey:@"response"];
+        
+        for (NSString *photoUrl in jsonPhotosResponse) {
+            [self appendPhoto: photoUrl];
+        }
+        
+        NSLog(@"Parse data OK");
+    }
+}
+
+-(void) callToWsAction
+{
+    NSLog(@"Create and init Request to WS");
+    
+    NSString *requestUrl = [NSString stringWithFormat:@"http://datta.zendelsolutions.com/sanzone/?lat=%@&lng=%@",
+                                self.latitude, self.longitude
+                            ];
+    
+    NSLog(@"requestUrl: %@", requestUrl);
+    
+    // Create request
+    NSURLRequest *request = [NSURLRequest requestWithURL:
+                                [NSURL URLWithString:requestUrl]
+                            ];
+    
+    // Connection and fire request
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    self.getLocationLabel.text = @"Fetching photos";
+    [self.getLocationIndicator startAnimating];
+}
+
+-(void) finishCallToWsAction
+{
+    self.getLocationLabel.text = @"Get Photos OK!";
+    [self.getLocationIndicator stopAnimating];
+}
+
 -(void)callToLocationManagerAction
 {
     self.getLocationLabel.text = @"Getting location";
@@ -61,13 +123,15 @@ CLLocationManager *locationManager;
 
 -(void)finishLocationManagerAction
 {
-    [NSThread sleepForTimeInterval:1.0f];
+    //[NSThread sleepForTimeInterval:1.0f];
     
     self.getLocationLabel.text = @"";
     [self.getLocationIndicator stopAnimating];
     
     NSLog(@"Latitude nueva: %@", self.latitude);
     NSLog(@"Longitude nueva: %@", self.longitude);
+    
+    [self callToWsAction];
 }
 
 -(void)failedLocationManagerAction
@@ -82,10 +146,54 @@ CLLocationManager *locationManager;
 }
 
 
+
+
+/* -------  NSURLConnection Delegate Methods  ------- */
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    // Alloc init to response data
+    self._responseData = [[NSMutableData alloc] init];
+    NSLog(@"Receive response");
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    // Receive data and save to response data var
+    NSLog(@"Receive data");
+    [self._responseData appendData:data];
+}
+
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
+                  willCacheResponse:(NSCachedURLResponse*)cachedResponse {
+    // Return nil to indicate not necessary to store a cached response for this connection
+    return nil;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    // Finish load, parse data
+    NSLog(@"Finished, get data OK!");
+    
+    [self parseDataPhotosResponseAction];
+    
+    [self finishCallToWsAction];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // Request failed
+    NSLog(@"Error to get data from WS: %@", error);
+}
+
+/* -------  END - NSURLConnection Delegate Methods  ------- */
+
+
+
+
 // SystemStatusBar TintColor Fix
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
+
+
+
 
 /* ------- locationManager EVENTS ------- */
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -114,5 +222,5 @@ CLLocationManager *locationManager;
         [self finishLocationManagerAction];
     }
 }
-/* ------- END locationManager EVENTS ------- */
+/* ------- END - locationManager EVENTS ------- */
 @end
