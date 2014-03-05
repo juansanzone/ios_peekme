@@ -49,13 +49,54 @@ CLLocationManager *locationManager;
 
 
 
+-(void) appendPhoto:(NSString*) photoUrl
+{
+    // TODO: Implement this method
+    NSLog(@"append --> %@", photoUrl);
+}
+
+-(void) parseDataPhotosResponseAction
+{
+    NSError *error = nil;
+    NSArray *jsonArray = [NSJSONSerialization
+                            JSONObjectWithData: self._responseData
+                            options: kNilOptions
+                            error: &error
+                          ];
+    
+    if (nil != error) {
+        NSLog(@"Error parsing JSON");
+    }
+    else {
+        
+        // NSLog(@"Parse data OK: %@", jsonArray);
+        
+        // TODO: check status key-value from Response
+        
+        NSArray *jsonPhotosResponse = [jsonArray valueForKey:@"response"];
+        
+        for (NSString *photoUrl in jsonPhotosResponse) {
+            [self appendPhoto: photoUrl];
+        }
+        
+        NSLog(@"Parse data OK");
+    }
+}
+
 -(void) callToWsAction
 {
     NSLog(@"Create and init Request to WS");
     
+    NSString *requestUrl = [NSString stringWithFormat:@"http://datta.zendelsolutions.com/sanzone/?lat=%@&lng=%@",
+                                self.latitude, self.longitude
+                            ];
+    
+    NSLog(@"requestUrl: %@", requestUrl);
+    
     // Create request
     NSURLRequest *request = [NSURLRequest requestWithURL:
-                             [NSURL URLWithString:@"http://datta.zendelsolutions.com/sanzone/?debug"]];
+                                [NSURL URLWithString:requestUrl]
+                            ];
     
     // Connection and fire request
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -130,6 +171,8 @@ CLLocationManager *locationManager;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     // Finish load, parse data
     NSLog(@"Finished, get data OK!");
+    
+    [self parseDataPhotosResponseAction];
     
     [self finishCallToWsAction];
 }
