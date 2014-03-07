@@ -24,6 +24,7 @@
 		836F212518B90468008EA618 /* PeekmeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 836F212418B90468008EA618 /* PeekmeTests.m */; };
 		83782AF318BAB5D100E4A4A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83782AF218BAB5D100E4A4A4 /* CoreLocation.framework */; };
 		83B16D0F18B9920C0073C541 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B16D0E18B9920C0073C541 /* search.png */; };
+		83D8687918C9659B00973A10 /* PhotoCellTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83D8687818C9659B00973A10 /* PhotoCellTVCell.m */; };
 		83E288AC18BEB6E4002028E3 /* flat-owl-shape.png in Resources */ = {isa = PBXBuildFile; fileRef = 83E288AB18BEB6E4002028E3 /* flat-owl-shape.png */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,8 @@
 		836F212418B90468008EA618 /* PeekmeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeekmeTests.m; sourceTree = "<group>"; };
 		83782AF218BAB5D100E4A4A4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		83B16D0E18B9920C0073C541 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = SOURCE_ROOT; };
+		83D8687718C9659B00973A10 /* PhotoCellTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCellTVCell.h; sourceTree = "<group>"; };
+		83D8687818C9659B00973A10 /* PhotoCellTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCellTVCell.m; sourceTree = "<group>"; };
 		83E288AB18BEB6E4002028E3 /* flat-owl-shape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flat-owl-shape.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -132,6 +135,8 @@
 				836F210F18B90468008EA618 /* ViewController.m */,
 				836F211118B90468008EA618 /* Images.xcassets */,
 				836F210018B90468008EA618 /* Supporting Files */,
+				83D8687718C9659B00973A10 /* PhotoCellTVCell.h */,
+				83D8687818C9659B00973A10 /* PhotoCellTVCell.m */,
 			);
 			path = Peekme;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83D8687918C9659B00973A10 /* PhotoCellTVCell.m in Sources */,
 				836F211018B90468008EA618 /* ViewController.m in Sources */,
 				836F210A18B90468008EA618 /* AppDelegate.m in Sources */,
 				836F210618B90468008EA618 /* main.m in Sources */,

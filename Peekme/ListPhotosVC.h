@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface ListPhotosVC : UIViewController  <CLLocationManagerDelegate, NSURLConnectionDelegate>
+@interface ListPhotosVC : UIViewController  <CLLocationManagerDelegate,
+                                                NSURLConnectionDelegate,
+                                                UITableViewDelegate,
+                                                UITableViewDataSource>
 
 // Model to receive Data from WS
 @property NSMutableData *_responseData;
+@property NSArray *jsonPhotosResponse;
 
 // Lat & long vars
 @property NSString *latitude;
@@ -23,5 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *getLocationLabel;
 
 - (IBAction)updateLocationButton:(UIBarButtonItem *)sender;
+
+
 
 @end

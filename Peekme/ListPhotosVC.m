@@ -7,6 +7,7 @@
 //
 
 #import "ListPhotosVC.h"
+#import "PhotoCellTVCell.h"
 
 @interface ListPhotosVC ()
 
@@ -73,9 +74,10 @@ CLLocationManager *locationManager;
         
         // TODO: check status key-value from Response
         
-        NSArray *jsonPhotosResponse = [jsonArray valueForKey:@"response"];
         
-        for (NSString *photoUrl in jsonPhotosResponse) {
+        self.jsonPhotosResponse = [jsonArray valueForKey:@"response"];
+        
+        for (NSString *photoUrl in self.jsonPhotosResponse) {
             [self appendPhoto: photoUrl];
         }
         
@@ -144,6 +146,39 @@ CLLocationManager *locationManager;
 {
     [self callToLocationManagerAction];
 }
+
+
+
+
+
+// tableview implementations
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *simpleTableIdentifier = @"Cell1";
+    
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    PhotoCellTVCell  *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+
+    
+    NSString *imageUrl = [self.jsonPhotosResponse objectAtIndex:indexPath.row];
+    
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        cell.mainImage.image = [UIImage imageWithData:data];
+    }];
+    
+    
+    return cell;
+}
+
+//
+
 
 
 
