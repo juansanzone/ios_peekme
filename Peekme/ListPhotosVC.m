@@ -7,6 +7,7 @@
 //
 
 #import "ListPhotosVC.h"
+#import "PhotoCellTVCell.h"
 
 @interface ListPhotosVC ()
 
@@ -73,9 +74,10 @@ CLLocationManager *locationManager;
         
         // TODO: check status key-value from Response
         
-        NSArray *jsonPhotosResponse = [jsonArray valueForKey:@"response"];
         
-        for (NSString *photoUrl in jsonPhotosResponse) {
+        self.jsonPhotosResponse = [jsonArray valueForKey:@"response"];
+        
+        for (NSString *photoUrl in self.jsonPhotosResponse) {
             [self appendPhoto: photoUrl];
         }
         
@@ -101,14 +103,21 @@ CLLocationManager *locationManager;
     // Connection and fire request
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
+    // Show Network activity indicator
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
     self.getLocationLabel.text = @"Fetching photos";
     [self.getLocationIndicator startAnimating];
 }
 
 -(void) finishCallToWsAction
 {
-    self.getLocationLabel.text = @"Get Photos OK!";
+    // Hide Network activity indicator
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    
+    self.getLocationLabel.text = @"";
     [self.getLocationIndicator stopAnimating];
+    [self.tableListPhotos reloadData ];
 }
 
 -(void)callToLocationManagerAction
@@ -127,6 +136,8 @@ CLLocationManager *locationManager;
     
     self.getLocationLabel.text = @"";
     [self.getLocationIndicator stopAnimating];
+    [self.getLocationIndicator setHidden:YES];
+    
     
     NSLog(@"Latitude nueva: %@", self.latitude);
     NSLog(@"Longitude nueva: %@", self.longitude);
@@ -144,6 +155,39 @@ CLLocationManager *locationManager;
 {
     [self callToLocationManagerAction];
 }
+
+
+
+
+
+// tableview implementations
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.jsonPhotosResponse.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *simpleTableIdentifier = @"Cell1";
+    
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
+    PhotoCellTVCell  *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+
+    
+    NSString *imageUrl = [self.jsonPhotosResponse objectAtIndex:indexPath.row];
+    
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        cell.mainImage.image = [UIImage imageWithData:data];
+    }];
+    
+    
+    return cell;
+}
+
+//
+
 
 
 
