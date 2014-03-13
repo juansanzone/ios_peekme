@@ -103,14 +103,21 @@ CLLocationManager *locationManager;
     // Connection and fire request
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
+    // Show Network activity indicator
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
     self.getLocationLabel.text = @"Fetching photos";
     [self.getLocationIndicator startAnimating];
 }
 
 -(void) finishCallToWsAction
 {
-    self.getLocationLabel.text = @"Get Photos OK!";
+    // Hide Network activity indicator
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    
+    self.getLocationLabel.text = @"";
     [self.getLocationIndicator stopAnimating];
+    [self.tableListPhotos reloadData ];
 }
 
 -(void)callToLocationManagerAction
@@ -129,6 +136,8 @@ CLLocationManager *locationManager;
     
     self.getLocationLabel.text = @"";
     [self.getLocationIndicator stopAnimating];
+    [self.getLocationIndicator setHidden:YES];
+    
     
     NSLog(@"Latitude nueva: %@", self.latitude);
     NSLog(@"Longitude nueva: %@", self.longitude);
@@ -155,7 +164,7 @@ CLLocationManager *locationManager;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return self.jsonPhotosResponse.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

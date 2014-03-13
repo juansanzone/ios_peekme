@@ -28,6 +28,7 @@
 
 - (IBAction)updateLocationButton:(UIBarButtonItem *)sender;
 
+@property (weak, nonatomic) IBOutlet UITableView *tableListPhotos;
 
 
 @end
