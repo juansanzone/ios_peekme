@@ -30,5 +30,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableListPhotos;
 
+@property (weak, nonatomic) IBOutlet UITableView *tableListPhotos2;
 
 @end
